@@ -7,6 +7,14 @@ This is the beginning of a port of [vim-surround](https://github.com/tpope/vim-s
 
 If you don't care about all the other fun stuff that vim-surround does, you may be interested in Vane's excellent [es-quotes](https://github.com/vilic/vscode-es-quotes) extension.
 
+## Install
+
+`Ctrl/Cmd + P` in Visual Studio Code, then:
+
+```sh
+ext install surround
+```
+
 ## Usage
 
 ### Swapping between single and double quotes
