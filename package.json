@@ -4,6 +4,10 @@
     "description": "A port of tpope's vim-surround to vscode",
     "version": "0.0.1",
     "publisher": "benfahrenheit",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/benfahrenheit/vscode-surround"
+    },
     "engines": {
         "vscode": "^0.10.10"
     },
