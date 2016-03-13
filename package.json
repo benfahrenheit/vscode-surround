@@ -2,7 +2,7 @@
     "name": "vscode-surround",
     "displayName": "Surround",
     "description": "A port of tpope's vim-surround to vscode",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "benfahrenheit",
     "icon": "assets/icon.png",
     "license": "MIT",
