@@ -3,8 +3,11 @@
 ## What's this? 
 This is the beginning of a port of [vim-surround](https://github.com/tpope/vim-surround) to [vscode](https://code.visualstudio.com).
 
-Really, I just wanted something to switch strings around between single- and double-quotes, as well as something to mess around
-with vscode extensions.
+(Really, I just wanted something to switch strings around between single- and double-quotes, as well as something to mess around
+with vscode extensions.)
+
+If you don't care about all the other fun stuff that vim-surround does, you may be interested in Vane's excellent
+[es-quotes](https://github.com/vilic/vscode-es-quotes) extension.
 
 ## Usage
 
