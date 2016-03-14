@@ -3,19 +3,33 @@
 import * as surround from "./surround";
 import * as vscode from "vscode";
 
+function swapSelections(editor: vscode.TextEditor) {
+    editor.edit((e) => {
+        editor.selections.forEach((selection, index) => {
+            const text = editor.document.getText(selection);
+            e.replace(selection, surround.swapQuotes(text));
+        });
+    });
+}
+
+function swapAtCursor(editor: vscode.TextEditor) {
+
+}
+
 /**
  * Grabs all of the selections in the active text editor and tries to swap the
  * quotes.
  */
-export function swapQuotesOnCurrentSelections() {
+export function swapQuotes() {
     const editor = vscode.window.activeTextEditor;
     if (editor) {
-        editor.edit((e) => {
-            editor.selections.forEach((selection, index) => {
-                const text = editor.document.getText(selection);
-                e.replace(selection, surround.swapQuotes(text));
-            });
-        });
+        // If there are active selections, then operate on those. Otherwise,
+        // try to figure out what to work on based on the cursor position.
+        if (editor.selections.length === 0) {
+            swapAtCursor(editor);
+        } else {
+            swapSelections(editor);
+        }
     }
 }
 
@@ -27,7 +41,7 @@ export function swapQuotesOnCurrentSelections() {
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.commands.registerCommand("extension.swapQuotes", () => {
-            swapQuotesOnCurrentSelections();
+            swapQuotes();
         })
     );
 }
