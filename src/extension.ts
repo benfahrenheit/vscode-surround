@@ -3,6 +3,10 @@
 import * as surround from "./surround";
 import * as vscode from "vscode";
 
+/**
+ * Iterate over all of the selections in the text editor and swap the
+ * quotes around.
+ */
 function swapSelections(editor: vscode.TextEditor) {
     editor.edit((e) => {
         editor.selections.forEach((selection, index) => {
@@ -12,8 +16,31 @@ function swapSelections(editor: vscode.TextEditor) {
     });
 }
 
+/**
+ * Try to find the quotes that are enclosing the current cursor position
+ * and swap them.
+ */
 function swapAtCursor(editor: vscode.TextEditor) {
+    // vscode.window.showInformationMessage("not currently implemented");
+}
 
+/**
+ * Determines whether the text editor has any active selection
+ * 
+ * @return true if there are one or more active selections; false otherwise
+ */
+function hasActiveSelections(editor: vscode.TextEditor): boolean {
+    if (editor.selections.length > 1) {
+        return true;
+    }
+
+    // As far as I know, this isn't possible. Even when there's no selection, there
+    // is a single selection of zero length. Checking just in case.
+    if (editor.selections.length === 0) {
+        return false;
+    }
+
+    return !(editor.selection.isEmpty);
 }
 
 /**
@@ -25,10 +52,10 @@ export function swapQuotes() {
     if (editor) {
         // If there are active selections, then operate on those. Otherwise,
         // try to figure out what to work on based on the cursor position.
-        if (editor.selections.length === 0) {
-            swapAtCursor(editor);
-        } else {
+        if (hasActiveSelections(editor)) {
             swapSelections(editor);
+        } else {
+            swapAtCursor(editor);
         }
     }
 }
