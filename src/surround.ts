@@ -19,3 +19,11 @@ export function swapQuotes(currentQuote: string): string {
         return currentQuote;
     }
 }
+
+/**
+ * Given a line and an offset, return a string that swaps the nearest enclosing
+ * quotes, if possible
+ */
+export function swapNearestEnclosingQuotes(line: string, offset: number): string {
+    return line;
+}

@@ -21,7 +21,13 @@ function swapSelections(editor: vscode.TextEditor) {
  * and swap them.
  */
 function swapAtCursor(editor: vscode.TextEditor) {
-    // vscode.window.showInformationMessage("not currently implemented");
+    // Grab the current line from the document so we can scan for quotes.
+    editor.edit((e) => {
+        const line = editor.document.lineAt(editor.selection.active).text;
+        const entireLine = new vscode.Range(editor.selection.active.line, 0,
+                                            editor.selection.active.line, line.length);
+        e.replace(entireLine, surround.swapNearestEnclosingQuotes(line, editor.selection.active.character));
+    });
 }
 
 /**
